@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
+import java.awt.geom.Point2D.Float;
 import javax.swing.*;
 
 public class Pong extends JFrame {
@@ -16,6 +17,9 @@ public class Pong extends JFrame {
     private Ball ball;
 
     private Timer ballStartTimer;
+
+    private final Rectangle leftGoalBounds = new Rectangle(0, 0, 90, 1120);
+    private final Rectangle rightGoalBounds = new Rectangle(1702, 0, 90, 1120);
 
     public Pong() {
         inputManager = new InputManager();
@@ -50,13 +54,19 @@ public class Pong extends JFrame {
         addKeyListener(inputManager);
         setVisible(true);
 
-        ballStartTimer = new Timer(1000, this::startBall);
-        ballStartTimer.setRepeats(true);
-        ballStartTimer.start();
+        startNewRound();
 
         final Timer timer = new Timer(3000 / 60, this::gameLoop);
         timer.setRepeats(true);
         timer.start();
+    }
+
+    private void startNewRound() {
+        ball.stop();
+        playField.newRound();
+        ballStartTimer = new Timer(1000, this::startBall);
+        ballStartTimer.setRepeats(true);
+        ballStartTimer.start();
     }
 
     private void gameLoop(final ActionEvent e) {
@@ -81,8 +91,22 @@ public class Pong extends JFrame {
         ball.update();
 
         // check collision and either score or change direction
+        final Float direction = ball.getDirection();
+        if ((direction.y < 0 && ball.getLocation().y <= 0) ||
+                (direction.y > 0 && ball.getLocation().y >= 1070)) {
+            ball.toggleDirectionY();
+        } else if ((direction.x < 0 && ball.getBounds().intersects(leftPadel.getBounds())) ||
+                (direction.x > 0 && ball.getBounds().intersects(rightPadel.getBounds()))) {
+            ball.toggleDirectionX();
+        }
 
-
+        if (direction.x < 0 && ball.getBounds().intersects(leftGoalBounds)) {
+            playField.rightScored();
+            startNewRound();
+        } else if (direction.x > 0 && ball.getBounds().intersects(rightGoalBounds)) {
+            playField.leftScored();
+            startNewRound();
+        }
     }
 
     private void startBall(ActionEvent e) {

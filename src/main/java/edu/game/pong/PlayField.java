@@ -14,10 +14,12 @@ public class PlayField extends JPanel {
 
     public void leftScored() {
         leftScore++;
+        repaint();
     }
 
     public void rightScored() {
         rightScore++;
+        repaint();
     }
 
     public void resetScore() {
@@ -34,6 +36,10 @@ public class PlayField extends JPanel {
         boolean result = --countdown == 0;
         repaint();
         return result;
+    }
+
+    public void newRound() {
+        countdown = 3;
     }
 
     public void showGameOver() {

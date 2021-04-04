@@ -2,6 +2,7 @@ package edu.game.pong;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 import java.util.Random;
 import javax.swing.*;
@@ -27,17 +28,31 @@ public class Ball extends JComponent {
         update();
     }
 
+    public Point2D.Float getDirection() {
+        final Float direction = new Float();
+        direction.setLocation(ballDirection);
+        return direction;
+    }
+
     public void start() {
         speed = MIN_SPEED;
         ballLocation.setLocation(centerPosition);
 
         Random random = new Random();
         final boolean startToRight = random.nextBoolean();
-        float x = startToRight ? 1.0f : -1.0f;
-        float y = 0.0f;
+        float x = startToRight ? 0.5f : -0.5f;
+
+        final boolean upDown = random.nextBoolean();
+        float y = upDown ? 0.5f : -0.5f;
         ballDirection.setLocation(x, y);
         ballDirection = normalize(ballDirection);
 
+        update();
+    }
+
+    public void stop() {
+        ballLocation.setLocation(centerPosition);
+        ballDirection.setLocation(0, 0);
         update();
     }
 
@@ -46,6 +61,16 @@ public class Ball extends JComponent {
             ballLocation.getX() + ballDirection.getX() * speed,
             ballLocation.getY() + ballDirection.getY() * speed);
         setLocation(getBallLocation());
+    }
+
+    public void toggleDirectionY() {
+        ballDirection.setLocation(ballDirection.x, -ballDirection.y);
+        ballDirection = normalize(ballDirection);
+    }
+
+    public void toggleDirectionX() {
+        ballDirection.setLocation(-ballDirection.x, ballDirection.y);
+        ballDirection = normalize(ballDirection);
     }
 
     public void increaseSpeed() {
