@@ -78,9 +78,11 @@ public class PlayField extends JPanel {
         }
 
         // draw dashed mid line
-        Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{10, 50}, 0);
-        g2d.setStroke(dashed);
-        g2d.drawLine(getWidth() / 2, 0, getWidth() / 2, getHeight());
+        if (!gameOver) {
+            Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{10, 50}, 0);
+            g2d.setStroke(dashed);
+            g2d.drawLine(getWidth() / 2, 0, getWidth() / 2, getHeight());
+        }
 
         // draw score
         g2d.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 52));
