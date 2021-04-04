@@ -85,7 +85,6 @@ public class Ball extends JComponent {
         }
 
         speed += SPEED_INCREMENT;
-        System.out.println("Increasing speed to: " + speed);
     }
 
     @Override
