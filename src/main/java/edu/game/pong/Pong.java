@@ -17,6 +17,7 @@ public class Pong extends JFrame {
     private Ball ball;
 
     private Timer ballStartTimer;
+    private Timer levelIncreaseTimer;
 
     private final Rectangle leftGoalBounds = new Rectangle(0, 0, 90, 1120);
     private final Rectangle rightGoalBounds = new Rectangle(1702, 0, 90, 1120);
@@ -36,12 +37,12 @@ public class Pong extends JFrame {
         add(playField);
 
         leftPadel = new Padel(inputManager, KeyEvent.VK_W, KeyEvent.VK_S);
-        leftPadel.setLocation(new Point(100, 100));
+        leftPadel.setLocation(new Point(100, (int) WINDOW_SIZE.getHeight() / 2 - 50));
         leftPadel.setSize(new Dimension(20, 100));
         playField.add(leftPadel);
 
         rightPadel = new Padel(inputManager, KeyEvent.VK_UP, KeyEvent.VK_DOWN);
-        rightPadel.setLocation((int) WINDOW_SIZE.getWidth() - 120, 100);
+        rightPadel.setLocation((int) WINDOW_SIZE.getWidth() - 120, (int) WINDOW_SIZE.getHeight() / 2 - 50);
         rightPadel.setSize(new Dimension(20, 100));
         playField.add(rightPadel);
 
@@ -64,6 +65,10 @@ public class Pong extends JFrame {
     private void startNewRound() {
         if (playField.hasWinner()) {
             return;
+        }
+
+        if (levelIncreaseTimer != null) {
+            levelIncreaseTimer.stop();
         }
 
         ball.stop();
@@ -121,6 +126,14 @@ public class Pong extends JFrame {
         if (startBall) {
             ball.start();
             ballStartTimer.stop();
+
+            startLevelIncreaseTimer();
         }
+    }
+
+    private void startLevelIncreaseTimer() {
+        levelIncreaseTimer = new Timer(15 * 1000, (ActionEvent e) -> ball.increaseSpeed());
+        levelIncreaseTimer.setRepeats(true);
+        levelIncreaseTimer.start();
     }
 }

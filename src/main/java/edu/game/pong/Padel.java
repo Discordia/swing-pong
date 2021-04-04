@@ -17,10 +17,10 @@ public class Padel extends JComponent {
     public void update() {
         Point location = getLocation();
         if  (inputManager.isKeyDown(upKey) && location.y > 0) {
-            setLocation(getX(), getY() - 10);
+            setLocation(getX(), getY() - 20);
         }
         if (inputManager.isKeyDown(downKey) && location.y < 1000) {
-            setLocation(getX(), getY() + 10);
+            setLocation(getX(), getY() + 20);
         }
     }
 

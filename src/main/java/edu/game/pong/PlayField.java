@@ -4,8 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 
 public class PlayField extends JPanel {
-    private int leftScore = 4;
-    private int rightScore = 4;
+    private int leftScore = 0;
+    private int rightScore = 0;
     private int countdown = 3;
     private boolean gameOver;
 

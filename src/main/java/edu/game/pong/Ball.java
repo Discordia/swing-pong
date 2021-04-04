@@ -8,8 +8,8 @@ import java.util.Random;
 import javax.swing.*;
 
 public class Ball extends JComponent {
-    public static final int MIN_SPEED = 10;
-    public static final int MAX_SPEED = 30;
+    public static final int MIN_SPEED = 20;
+    public static final int MAX_SPEED = 40;
     public static final int SPEED_INCREMENT = 2;
 
     private final Float centerPosition;
@@ -79,6 +79,7 @@ public class Ball extends JComponent {
         }
 
         speed += SPEED_INCREMENT;
+        System.out.println("Increasing speed to: " + speed);
     }
 
     @Override
