@@ -13,7 +13,7 @@ public class Ball extends JComponent {
 
     private final Float centerPosition;
 
-    private Float ballLocation;
+    private final Float ballLocation;
     private Float ballDirection;
     private int speed;
 

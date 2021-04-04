@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InputManager extends KeyAdapter {
-    private Map<Integer, Boolean> keyMap = new HashMap<>();
+    private final Map<Integer, Boolean> keyMap = new HashMap<>();
 
     public boolean isKeyDown(int key) {
         return keyMap.containsKey(key) && keyMap.get(key);
