@@ -7,7 +7,7 @@ import static edu.game.pong.GameConstants.WINDOW_SIZE;
 
 public class Padel extends JComponent {
     private final InputManager inputManager;
-    private Player player;
+    private final Player player;
 
     public Padel(final InputManager inputManager, Player player) {
         this.inputManager = inputManager;
