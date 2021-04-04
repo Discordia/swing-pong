@@ -3,7 +3,7 @@ package edu.game.pong;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
-import static edu.game.pong.GameConstants.WINDOW_SIZE;
+import static edu.game.pong.PongConstants.WINDOW_SIZE;
 
 public class Padel extends JComponent {
     private final InputManager inputManager;

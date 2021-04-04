@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 
-public class GameConstants {
+public class PongConstants {
     public static final Dimension WINDOW_SIZE = new Dimension(1792, 1120);
 
     public static final Float CENTER_LOCATION = new Point2D.Float(

@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D.Float;
 import javax.swing.*;
-import static edu.game.pong.GameConstants.WINDOW_SIZE;
+import static edu.game.pong.PongConstants.WINDOW_SIZE;
 
 public class Pong extends JFrame {
     private final InputManager inputManager;

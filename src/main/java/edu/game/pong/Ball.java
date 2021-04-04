@@ -6,11 +6,11 @@ import java.awt.geom.Point2D.Float;
 import java.util.Random;
 import java.util.SplittableRandom;
 import javax.swing.*;
-import static edu.game.pong.GameConstants.BALL_SIZE;
-import static edu.game.pong.GameConstants.CENTER_LOCATION;
-import static edu.game.pong.GameConstants.MAX_SPEED;
-import static edu.game.pong.GameConstants.MIN_SPEED;
-import static edu.game.pong.GameConstants.SPEED_INCREMENT;
+import static edu.game.pong.PongConstants.BALL_SIZE;
+import static edu.game.pong.PongConstants.CENTER_LOCATION;
+import static edu.game.pong.PongConstants.MAX_SPEED;
+import static edu.game.pong.PongConstants.MIN_SPEED;
+import static edu.game.pong.PongConstants.SPEED_INCREMENT;
 
 public class Ball extends JComponent {
     private final Float ballLocation;
