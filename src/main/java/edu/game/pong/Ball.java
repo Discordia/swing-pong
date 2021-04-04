@@ -8,9 +8,9 @@ import java.util.SplittableRandom;
 import javax.swing.*;
 import static edu.game.pong.PongConstants.BALL_SIZE;
 import static edu.game.pong.PongConstants.CENTER_LOCATION;
-import static edu.game.pong.PongConstants.MAX_SPEED;
-import static edu.game.pong.PongConstants.MIN_SPEED;
-import static edu.game.pong.PongConstants.SPEED_INCREMENT;
+import static edu.game.pong.PongConstants.BALL_MAX_SPEED;
+import static edu.game.pong.PongConstants.BALL_MIN_SPEED;
+import static edu.game.pong.PongConstants.BALL_SPEED_INCREMENT;
 
 public class Ball extends JComponent {
     private final Float ballLocation;
@@ -21,7 +21,7 @@ public class Ball extends JComponent {
         this.ballLocation = new Float();
         this.ballLocation.setLocation(CENTER_LOCATION);
         this.ballDirection = new Float(0, 0);
-        this.speed = MIN_SPEED;
+        this.speed = BALL_MIN_SPEED;
 
         setSize(BALL_SIZE);
         update();
@@ -34,7 +34,7 @@ public class Ball extends JComponent {
     }
 
     public void start() {
-        speed = MIN_SPEED;
+        speed = BALL_MIN_SPEED;
         ballLocation.setLocation(CENTER_LOCATION);
 
         SplittableRandom srandom = new SplittableRandom();
@@ -78,11 +78,11 @@ public class Ball extends JComponent {
     }
 
     public void increaseSpeed() {
-        if (speed >= MAX_SPEED) {
+        if (speed >= BALL_MAX_SPEED) {
             return;
         }
 
-        speed += SPEED_INCREMENT;
+        speed += BALL_SPEED_INCREMENT;
     }
 
     @Override

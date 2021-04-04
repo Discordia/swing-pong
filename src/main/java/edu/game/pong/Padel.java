@@ -3,6 +3,7 @@ package edu.game.pong;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
+import static edu.game.pong.PongConstants.PADEL_SPEED;
 import static edu.game.pong.PongConstants.WINDOW_SIZE;
 
 public class Padel extends JComponent {
@@ -27,10 +28,10 @@ public class Padel extends JComponent {
     public void update() {
         Point location = getLocation();
         if  (inputManager.isKeyDown(getUpKey()) && location.y > 0) {
-            setLocation(getX(), getY() - 20);
+            setLocation(getX(), getY() - PADEL_SPEED);
         }
         if (inputManager.isKeyDown(getDownKey()) && location.y < 1000) {
-            setLocation(getX(), getY() + 20);
+            setLocation(getX(), getY() + PADEL_SPEED);
         }
     }
 

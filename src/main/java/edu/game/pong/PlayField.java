@@ -70,7 +70,7 @@ public class PlayField extends JPanel {
             g2d.drawString("Press SPACE to restart", getWidth() / 2 - 170, getHeight() / 2 + 50);
         }
 
-        g2d.setColor(Color.LIGHT_GRAY);
+        g2d.setColor(Color.GRAY);
 
         if (countdown > 0) {
             g2d.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 100));

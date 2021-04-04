@@ -17,8 +17,8 @@ public class Pong extends JFrame {
     private Timer ballStartTimer;
     private Timer levelIncreaseTimer;
 
-    private final Rectangle leftGoalBounds = new Rectangle(0, 0, 90, 1120);
-    private final Rectangle rightGoalBounds = new Rectangle(1702, 0, 90, 1120);
+    private final Rectangle leftGoalBounds = new Rectangle(0, 0, 80, 1120);
+    private final Rectangle rightGoalBounds = new Rectangle(1712, 0, 80, 1120);
 
     public Pong() {
         inputManager = new InputManager();
@@ -48,7 +48,7 @@ public class Pong extends JFrame {
 
         startNewRound();
 
-        final Timer timer = new Timer(3000 / 60, this::gameLoop);
+        final Timer timer = new Timer(1000 / 60, this::gameLoop);
         timer.setRepeats(true);
         timer.start();
     }
