@@ -7,18 +7,14 @@ import java.awt.geom.Point2D.Float;
 import java.util.Random;
 import java.util.SplittableRandom;
 import javax.swing.*;
+import static edu.game.pong.GameConstants.BALL_SIZE;
+import static edu.game.pong.GameConstants.CENTER_LOCATION;
+import static edu.game.pong.GameConstants.MAX_SPEED;
+import static edu.game.pong.GameConstants.MIN_SPEED;
+import static edu.game.pong.GameConstants.SPEED_INCREMENT;
 import static edu.game.pong.GameConstants.WINDOW_SIZE;
 
 public class Ball extends JComponent {
-    private static final Float CENTER_LOCATION = new Point2D.Float(
-        (float)WINDOW_SIZE.getWidth() / 2 - 15,
-        (float)WINDOW_SIZE.getHeight() / 2 - 15);
-    private static final Dimension BALL_SIZE = new Dimension(30, 30);
-
-    private static final int MIN_SPEED = 20;
-    private static final int MAX_SPEED = 50;
-    private static final int SPEED_INCREMENT = 2;
-
     private final Float ballLocation;
     private Float ballDirection;
     private int speed;
