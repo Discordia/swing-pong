@@ -1,7 +1,6 @@
 package edu.game.pong;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 import java.util.Random;
@@ -12,7 +11,6 @@ import static edu.game.pong.GameConstants.CENTER_LOCATION;
 import static edu.game.pong.GameConstants.MAX_SPEED;
 import static edu.game.pong.GameConstants.MIN_SPEED;
 import static edu.game.pong.GameConstants.SPEED_INCREMENT;
-import static edu.game.pong.GameConstants.WINDOW_SIZE;
 
 public class Ball extends JComponent {
     private final Float ballLocation;

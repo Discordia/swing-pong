@@ -3,7 +3,6 @@ package edu.game.pong;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 import javax.swing.*;
 import static edu.game.pong.GameConstants.WINDOW_SIZE;
