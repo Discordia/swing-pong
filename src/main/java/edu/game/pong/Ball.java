@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class Ball extends JComponent {
     public static final int MIN_SPEED = 20;
-    public static final int MAX_SPEED = 40;
+    public static final int MAX_SPEED = 50;
     public static final int SPEED_INCREMENT = 2;
 
     private final Float centerPosition;
@@ -44,11 +44,11 @@ public class Ball extends JComponent {
         final boolean startToRight = random.nextBoolean();
 
         float x = startToRight ? 0.5f : -0.5f;
-        x += (float) srandom.nextDouble(-0.05, 0.05);
+        x += (float) srandom.nextDouble(-0.1, 0.1);
 
         final boolean upDown = random.nextBoolean();
         float y = upDown ? 0.5f : -0.5f;
-        y += (float) srandom.nextDouble(-0.05, 0.05);
+        y += (float) srandom.nextDouble(-0.1, 0.1);
 
         ballDirection.setLocation(x, y);
         ballDirection = normalize(ballDirection);
