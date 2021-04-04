@@ -1,25 +1,35 @@
 package edu.game.pong;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import javax.swing.*;
+import static edu.game.pong.GameConstants.WINDOW_SIZE;
 
 public class Padel extends JComponent {
     private final InputManager inputManager;
-    private final int upKey;
-    private final int downKey;
+    private Player player;
 
-    public Padel(final InputManager inputManager, final int upKey, final int downKey) {
+    public Padel(final InputManager inputManager, Player player) {
         this.inputManager = inputManager;
-        this.upKey = upKey;
-        this.downKey = downKey;
+        this.player = player;
+
+        setSize(20, 100);
+    }
+
+    public void reset() {
+        if (player == Player.LEFT) {
+            setLocation(new Point(100, (int) WINDOW_SIZE.getHeight() / 2 - 50));
+        } else {
+            setLocation((int) WINDOW_SIZE.getWidth() - 120, (int) WINDOW_SIZE.getHeight() / 2 - 50);
+        }
     }
 
     public void update() {
         Point location = getLocation();
-        if  (inputManager.isKeyDown(upKey) && location.y > 0) {
+        if  (inputManager.isKeyDown(getUpKey()) && location.y > 0) {
             setLocation(getX(), getY() - 20);
         }
-        if (inputManager.isKeyDown(downKey) && location.y < 1000) {
+        if (inputManager.isKeyDown(getDownKey()) && location.y < 1000) {
             setLocation(getX(), getY() + 20);
         }
     }
@@ -30,5 +40,13 @@ public class Padel extends JComponent {
 
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
+    }
+
+    private int getUpKey() {
+        return player == Player.LEFT ? KeyEvent.VK_W : KeyEvent.VK_UP;
+    }
+
+    private int getDownKey() {
+        return player == Player.LEFT ? KeyEvent.VK_S : KeyEvent.VK_DOWN;
     }
 }

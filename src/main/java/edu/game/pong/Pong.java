@@ -6,10 +6,9 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 import javax.swing.*;
+import static edu.game.pong.GameConstants.WINDOW_SIZE;
 
 public class Pong extends JFrame {
-    private static final Dimension WINDOW_SIZE = new Dimension(1792, 1120);
-
     private final InputManager inputManager;
     private PlayField playField;
     private Padel leftPadel;
@@ -36,20 +35,13 @@ public class Pong extends JFrame {
         playField.setBackground(Color.BLACK);
         add(playField);
 
-        leftPadel = new Padel(inputManager, KeyEvent.VK_W, KeyEvent.VK_S);
-        leftPadel.setLocation(new Point(100, (int) WINDOW_SIZE.getHeight() / 2 - 50));
-        leftPadel.setSize(new Dimension(20, 100));
+        leftPadel = new Padel(inputManager, Player.LEFT);
         playField.add(leftPadel);
 
-        rightPadel = new Padel(inputManager, KeyEvent.VK_UP, KeyEvent.VK_DOWN);
-        rightPadel.setLocation((int) WINDOW_SIZE.getWidth() - 120, (int) WINDOW_SIZE.getHeight() / 2 - 50);
-        rightPadel.setSize(new Dimension(20, 100));
+        rightPadel = new Padel(inputManager, Player.RIGHT);
         playField.add(rightPadel);
 
-        ball = new Ball(new Point2D.Float(
-            (float)WINDOW_SIZE.getWidth() / 2 - 15,
-            (float)WINDOW_SIZE.getHeight() / 2 - 15));
-        ball.setSize(new Dimension(30, 30));
+        ball = new Ball();
         playField.add(ball);
 
         addKeyListener(inputManager);
@@ -72,6 +64,8 @@ public class Pong extends JFrame {
         }
 
         ball.stop();
+        leftPadel.reset();
+        rightPadel.reset();
         playField.newRound();
         ballStartTimer = new Timer(1000, this::startBall);
         ballStartTimer.setRepeats(true);

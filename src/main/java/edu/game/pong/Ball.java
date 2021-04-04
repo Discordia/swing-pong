@@ -7,25 +7,29 @@ import java.awt.geom.Point2D.Float;
 import java.util.Random;
 import java.util.SplittableRandom;
 import javax.swing.*;
+import static edu.game.pong.GameConstants.WINDOW_SIZE;
 
 public class Ball extends JComponent {
-    public static final int MIN_SPEED = 20;
-    public static final int MAX_SPEED = 50;
-    public static final int SPEED_INCREMENT = 2;
+    private static final Float CENTER_LOCATION = new Point2D.Float(
+        (float)WINDOW_SIZE.getWidth() / 2 - 15,
+        (float)WINDOW_SIZE.getHeight() / 2 - 15);
+    private static final Dimension BALL_SIZE = new Dimension(30, 30);
 
-    private final Float centerPosition;
+    private static final int MIN_SPEED = 20;
+    private static final int MAX_SPEED = 50;
+    private static final int SPEED_INCREMENT = 2;
 
     private final Float ballLocation;
     private Float ballDirection;
     private int speed;
 
-    public Ball(Float centerPosition) {
-        this.centerPosition = centerPosition;
+    public Ball() {
         this.ballLocation = new Float();
-        this.ballLocation.setLocation(centerPosition);
+        this.ballLocation.setLocation(CENTER_LOCATION);
         this.ballDirection = new Float(0, 0);
         this.speed = MIN_SPEED;
 
+        setSize(BALL_SIZE);
         update();
     }
 
@@ -37,7 +41,7 @@ public class Ball extends JComponent {
 
     public void start() {
         speed = MIN_SPEED;
-        ballLocation.setLocation(centerPosition);
+        ballLocation.setLocation(CENTER_LOCATION);
 
         SplittableRandom srandom = new SplittableRandom();
         Random random = new Random();
@@ -57,7 +61,7 @@ public class Ball extends JComponent {
     }
 
     public void stop() {
-        ballLocation.setLocation(centerPosition);
+        ballLocation.setLocation(CENTER_LOCATION);
         ballDirection.setLocation(0, 0);
         update();
     }
