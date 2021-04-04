@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
 import java.util.Random;
+import java.util.SplittableRandom;
 import javax.swing.*;
 
 public class Ball extends JComponent {
@@ -38,12 +39,17 @@ public class Ball extends JComponent {
         speed = MIN_SPEED;
         ballLocation.setLocation(centerPosition);
 
+        SplittableRandom srandom = new SplittableRandom();
         Random random = new Random();
         final boolean startToRight = random.nextBoolean();
+
         float x = startToRight ? 0.5f : -0.5f;
+        x += (float) srandom.nextDouble(-0.05, 0.05);
 
         final boolean upDown = random.nextBoolean();
         float y = upDown ? 0.5f : -0.5f;
+        y += (float) srandom.nextDouble(-0.05, 0.05);
+
         ballDirection.setLocation(x, y);
         ballDirection = normalize(ballDirection);
 
