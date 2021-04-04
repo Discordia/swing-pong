@@ -62,6 +62,10 @@ public class Pong extends JFrame {
     }
 
     private void startNewRound() {
+        if (playField.hasWinner()) {
+            return;
+        }
+
         ball.stop();
         playField.newRound();
         ballStartTimer = new Timer(1000, this::startBall);
@@ -76,10 +80,12 @@ public class Pong extends JFrame {
 
         // check is game over? If so display game over and only check for space
         if (playField.hasWinner()) {
+            ball.stop();
             playField.showGameOver();
 
             if (inputManager.isKeyDown(KeyEvent.VK_SPACE)) {
                 playField.resetScore();
+                startNewRound();
             }
 
             return;
