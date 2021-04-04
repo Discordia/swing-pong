@@ -13,6 +13,9 @@ import static edu.game.pong.PongConstants.BALL_MIN_SPEED;
 import static edu.game.pong.PongConstants.BALL_SPEED_INCREMENT;
 
 public class Ball extends JComponent {
+    private final SplittableRandom srandom = new SplittableRandom();
+    private final Random random = new Random();
+
     private final Float ballLocation;
     private Float ballDirection;
     private int speed;
@@ -37,8 +40,6 @@ public class Ball extends JComponent {
         speed = BALL_MIN_SPEED;
         ballLocation.setLocation(CENTER_LOCATION);
 
-        SplittableRandom srandom = new SplittableRandom();
-        Random random = new Random();
         final boolean startToRight = random.nextBoolean();
 
         float x = startToRight ? 0.5f : -0.5f;
@@ -73,7 +74,8 @@ public class Ball extends JComponent {
     }
 
     public void toggleDirectionX() {
-        ballDirection.setLocation(-ballDirection.x, ballDirection.y);
+        final double tweek = srandom.nextDouble(-0.2, 0.2);
+        ballDirection.setLocation(-ballDirection.x, ballDirection.y + tweek);
         ballDirection = normalize(ballDirection);
     }
 
