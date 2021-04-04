@@ -89,8 +89,12 @@ public class Ball extends JComponent {
     protected void paintComponent(final Graphics g) {
         super.paintComponent(g);
 
-        g.setColor(Color.WHITE);
-        g.fillOval(0, 0, getWidth(), getHeight());
+        Graphics2D g2d = (Graphics2D) g.create();
+
+        g2d.setColor(Color.WHITE);
+        g2d.fillOval(0, 0, getWidth(), getHeight());
+
+        g2d.dispose();
     }
 
     private Point getBallLocation() {

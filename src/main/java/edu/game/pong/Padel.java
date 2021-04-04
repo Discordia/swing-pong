@@ -39,8 +39,12 @@ public class Padel extends JComponent {
     protected void paintComponent(final Graphics g) {
         super.paintComponent(g);
 
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        Graphics2D g2d = (Graphics2D) g.create();
+
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+
+        g2d.dispose();
     }
 
     private int getUpKey() {

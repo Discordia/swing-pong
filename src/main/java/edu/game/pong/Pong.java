@@ -22,13 +22,13 @@ public class Pong extends JFrame {
 
     public Pong() {
         inputManager = new InputManager();
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setSize(WINDOW_SIZE);
     }
 
     void start() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setSize(WINDOW_SIZE);
+
         playField = new PlayField(null);
         playField.setSize(WINDOW_SIZE);
         playField.setBackground(Color.BLACK);
@@ -45,6 +45,7 @@ public class Pong extends JFrame {
 
         addKeyListener(inputManager);
         setVisible(true);
+        createBufferStrategy(2);
 
         startNewRound();
 
