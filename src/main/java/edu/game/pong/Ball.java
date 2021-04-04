@@ -71,12 +71,12 @@ public class Ball extends JComponent {
     private Float normalize(Float direction) {
         final double magnitude = Math.sqrt(direction.getX() * direction.getX() + direction.getY() * direction.getY());
 
-        if (magnitude > 0) {
-            float x = (float) (direction.x / magnitude);
-            float y = (float) (direction.y / magnitude);
-            return new Float(x, y);
+        if (magnitude <= 0) {
+            return direction;
         }
 
-        return direction;
+        float x = (float) (direction.x / magnitude);
+        float y = (float) (direction.y / magnitude);
+        return new Float(x, y);
     }
 }
