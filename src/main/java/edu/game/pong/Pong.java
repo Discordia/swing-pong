@@ -27,6 +27,7 @@ public class Pong extends JFrame {
     void start() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setResizable(false);
         setSize(WINDOW_SIZE);
 
         playField = new PlayField(null);
@@ -46,6 +47,10 @@ public class Pong extends JFrame {
         addKeyListener(inputManager);
         setVisible(true);
         createBufferStrategy(2);
+
+        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice device = graphics.getDefaultScreenDevice();
+        device.setFullScreenWindow(this);
 
         startNewRound();
 
@@ -98,7 +103,7 @@ public class Pong extends JFrame {
         // check collision and either score or change direction
         final Float direction = ball.getDirection();
         if ((direction.y < 0 && ball.getLocation().y <= 0) ||
-                (direction.y > 0 && ball.getLocation().y >= 1070)) {
+                (direction.y > 0 && ball.getLocation().y >= 1090)) {
             ball.toggleDirectionY();
         } else if ((direction.x < 0 && ball.getBounds().intersects(leftPadel.getBounds())) ||
                 (direction.x > 0 && ball.getBounds().intersects(rightPadel.getBounds()))) {

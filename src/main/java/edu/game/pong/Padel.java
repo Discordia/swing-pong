@@ -30,7 +30,7 @@ public class Padel extends JComponent {
         if  (inputManager.isKeyDown(getUpKey()) && location.y > 0) {
             setLocation(getX(), getY() - PADEL_SPEED);
         }
-        if (inputManager.isKeyDown(getDownKey()) && location.y < 1000) {
+        if (inputManager.isKeyDown(getDownKey()) && location.y < 1020) {
             setLocation(getX(), getY() + PADEL_SPEED);
         }
     }
