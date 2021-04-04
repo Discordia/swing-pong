@@ -20,6 +20,8 @@ public class Pong extends JFrame {
     private final Rectangle leftGoalBounds = new Rectangle(0, 0, 80, 1120);
     private final Rectangle rightGoalBounds = new Rectangle(1712, 0, 80, 1120);
 
+    boolean fullscreen = true;
+
     public Pong() {
         inputManager = new InputManager();
     }
@@ -48,9 +50,11 @@ public class Pong extends JFrame {
         setVisible(true);
         createBufferStrategy(2);
 
-        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice device = graphics.getDefaultScreenDevice();
-        device.setFullScreenWindow(this);
+        if (fullscreen) {
+            GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice device = graphics.getDefaultScreenDevice();
+            device.setFullScreenWindow(this);
+        }
 
         startNewRound();
 
